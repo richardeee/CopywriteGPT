@@ -16,7 +16,9 @@ import {
   Label,
   Stack,
   IStackTokens,
-  Dropdown, IDropdownOption
+  Dropdown, IDropdownOption,
+  MessageBar,
+  MessageBarType,
 } from "@fluentui/react";
 import { useBoolean } from "@fluentui/react-hooks";
 import { Icon } from "@fluentui/react/lib/Icon";
@@ -113,21 +115,6 @@ const Copywrite = () => {
   };
 
 
-//   const onRenderFooterContent = () => (
-//       <div>
-//         <PrimaryButton
-//           onClick={generateCopywrite}
-//           styles={buttonStyles}
-//           iconProps={{ iconName: "Lightbulb" }}
-//         >
-//           生成
-//         </PrimaryButton>
-//         <DefaultButton onClick={dismissPanel}>取消</DefaultButton>
-//       </div>
-//     ),
-//     [dismissPanel]
-//   );
-
   const onTitleChange = (
     _ev?: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
     newValue?: string
@@ -180,6 +167,8 @@ const Copywrite = () => {
       setIsLoading(false);
       return;
     }
+    dismissPanel();
+
     try {
       const request: CopywriteRequest = {
         approach: "gpt_with_dalle2",
@@ -269,6 +258,18 @@ const Copywrite = () => {
             onDismiss={dismissPanel}
             isFooterAtBottom={true}
           >
+            {error ? (
+        <>
+        <MessageBar
+          messageBarType={MessageBarType.error}
+          isMultiline={false}
+          onDismiss={() => setError(undefined)}
+          dismissButtonAriaLabel="Close"
+        >
+          {error.toString()}
+        </MessageBar>
+        </>  ) : null
+      }
             <TextField
               className={styles.chatSettingsSeparator}
               defaultValue={title}
