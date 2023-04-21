@@ -19,25 +19,55 @@
 .generateButton{
     margin-right: 8 
 }
-.editorContainer {
-    display: block;
-    flex-direction: column;
-    margin-top:0px;
-    align-self: center;
-    width: 70%;
-    height:100%;
-}
-.editor{
-    flex:1;
+
+@media screen and (max-width:768px){
+
+    .editorContainer {
+        display: block;
+        flex-direction: column;
+        margin-top:0px;
+        align-self: center;
+        width: 100%;
+        height:100%;
+    }
+    .editor{
+        flex:1;
+    }
+    
+    .preview {
+        width: 100%;
+        height: 100%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 4px;
+        box-sizing: border-box;
+        flex:1;
+        align-content: center;
+    }
+
 }
 
-.previewContainer {
-    width: 100%;
-    height: 100%;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 4px;
-    box-sizing: border-box;
-    flex:1;
-    align-content: center;
+@media screen and (min-width:768px){
+    .editorContainer {
+        display: flex;
+        flex-direction: row;
+        margin-top:0px;
+        align-self: center;
+        width: 70%;
+        height:100%;
+    }
+    .editor{
+        flex:1;
+    }
+    
+    .preview {
+        width: 100%;
+        height: 100%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 4px;
+        box-sizing: border-box;
+        flex:1;
+        align-content: center;
+    }
 }
