@@ -15,12 +15,12 @@ const Layout = () => {
                     <nav>
                         <ul className={styles.headerNavList}>
                             <li>
-                                <NavLink to="/" className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}>
+                                {/* <NavLink to="/" className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}>
                                     Copywriting
-                                </NavLink>
+                                </NavLink> */}
                             </li>
                             <li className={styles.headerNavLeftMargin}>
-                                <a href="https://aka.ms/entgptsearch" target={"_blank"} title="Github repository link">
+                                <a href="https://github.com/richardeee/CopywriteGPT" target={"_blank"} title="Github repository link">
                                     <img
                                         src={github}
                                         alt="Github logo"
@@ -33,7 +33,7 @@ const Layout = () => {
                             </li>
                         </ul>
                     </nav>
-                    <h4 className={styles.headerRightText}>Azure ChatGPT + Dall-E2</h4>
+                    <h3 className={styles.headerRightText}>Azure ChatGPT + Dall-E2</h3>
                 </div>
             </header>
 

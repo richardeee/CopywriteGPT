@@ -201,7 +201,7 @@ const Copywrite = () => {
     <div className={styles.container}>
       <div className={styles.editorContainer}>
         <Pivot className={styles.editor}>
-          <PivotItem headerText="编辑器" itemIcon="Edit">
+          <PivotItem headerText="编辑器" itemIcon="Edit" itemKey="editor">
             {isLoading && (
               <>
                 <Label>正在生成文案，请稍候</Label>
@@ -214,7 +214,7 @@ const Copywrite = () => {
               </>
             )}
           </PivotItem>
-          <PivotItem headerText="预览" itemIcon="Globe">
+          <PivotItem headerText="预览" itemIcon="Globe" itemKey="preview">
             {error ? (
               <div className={styles.previewContainer}>
                 <Stack tokens={verticalGapStackTokens}>
