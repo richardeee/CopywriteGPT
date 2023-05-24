@@ -1,14 +1,18 @@
 import requests
 import time
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
+AZURE_DALLE_API_KEY = os.getenv("AZURE_DALLE_API_KEY")
+AZURE_DALLE_API_BASE = os.getenv("AZURE_DALLE_API_BASE")
 
 class Dalle2Helper:
     dalle2_api_version = '2022-08-03-preview'
     
-    def __init__(self, api_key, api_base):
-        self.api_key = api_key
-        self.api_base = api_base
+    def __init__(self):
+        self.api_key = str(AZURE_DALLE_API_KEY)
+        self.api_base = str(AZURE_DALLE_API_BASE)
         self.api_version = self.dalle2_api_version
     
     def generate_image(self, user_prompt) -> str:

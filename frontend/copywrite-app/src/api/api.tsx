@@ -14,7 +14,9 @@ export async function generateApi(options: CopywriteRequest): Promise<CopywriteR
                 paragraphs: options.overrides?.paragraphs,
                 max_paragraph_length: options.overrides?.maxParagraphLength,
                 use_dalle: options.overrides?.useDalle,
-                art_style: options.overrides?.artStyle
+                art_style: options.overrides?.artStyle,
+                image_generator: options.overrides?.imageGenerator,
+                sd_host: options.overrides?.sdHost
             }
         })
     });

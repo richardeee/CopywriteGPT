@@ -21,6 +21,13 @@ import {
   MessageBar,
   MessageBarType,
 } from "@fluentui/react";
+import {
+  Radio,
+  RadioGroup,
+  tokens,
+  useId,
+} from "@fluentui/react-components";
+
 import { useBoolean } from "@fluentui/react-hooks";
 import { Icon } from "@fluentui/react/lib/Icon";
 
@@ -48,6 +55,10 @@ const Copywrite = () => {
   const [error, setError] = useState<unknown>();
   const [copywriteHTML, setCopywriteHTML] = useState<string>("");
   const [artStyle, setArtStyle] = useState<string[]>(["Landscape Photography"]);
+
+  const [imageGenerator, setImageGenerator] = useState<string>("dalle");
+  const labelId = useId("imageGenerator");
+  const [sdHost, setSdHost] = useState<string>("");
 
   const art_options = [
     { key: "Baroque", text: "巴洛克风格" },
@@ -129,6 +140,14 @@ const Copywrite = () => {
     setTitle(newValue || "");
   };
 
+  const onSDHostChange = (
+    _ev?: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+    newValue?: string
+  ) => {
+    console.log("SD Host:" + newValue);
+    setSdHost(newValue || "");
+  };
+
   const onTitleDescriptionChange = (
     _ev?: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
     newValue?: string
@@ -185,6 +204,7 @@ const Copywrite = () => {
           maxParagraphLength: maxParagraphLength,
           useDalle: useDalle,
           artStyle: artStyle,
+          imageGenerator: imageGenerator
         },
       };
       const result = await generateApi(request);
@@ -324,6 +344,7 @@ const Copywrite = () => {
               onChange={onUseDalleChange}
             />
             {useDalle && (
+              <>
               <Dropdown
                 placeholder="选择图片风格"
                 label="图片风格"
@@ -333,6 +354,25 @@ const Copywrite = () => {
                 multiSelect
                 options={art_options}
               />
+              <Label id={labelId}>图片生成器</Label>
+              <RadioGroup className={styles.chatSettingsSeparator} onChange={(_, data) => setImageGenerator(data.value)} aria-labelledby={labelId} value={imageGenerator}>
+                <Radio value="dalle" label="Dall-E2"/>
+                <Radio value="sd" label="Stable Diffusion"/>
+              </RadioGroup>
+              {imageGenerator === "sd" && (
+                <>
+                <TextField
+                  className={styles.chatSettingsSeparator}
+                  defaultValue={title}
+                  label="Host"
+                  onChange={onTitleChange}
+                  required={true}
+                />
+                </>
+              )     
+              }
+              </>
+              
             )}
           </Panel>
         </div>

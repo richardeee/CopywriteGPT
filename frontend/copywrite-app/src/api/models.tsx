@@ -13,6 +13,8 @@ export type CopywriteOverrides = {
     maxParagraphLength?: number;
     useDalle?: boolean;
     artStyle?: string[];
+    imageGenerator?: string;
+    sdHost?: string;
 };
 
 export type CopywriteRequest = {
