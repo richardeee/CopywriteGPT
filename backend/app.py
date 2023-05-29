@@ -18,10 +18,8 @@ openai.api_key = AZURE_OPENAI_API_KEY
 openai.api_base = AZURE_OPENAI_API_BASE
 openai.api_version = AZURE_OPENAI_API_VERSION
 
-dalle2helper = Dalle2Helper(AZURE_OPENAI_API_KEY, AZURE_OPENAI_API_BASE)
-
 copywrite_approaches = {
-    "gpt_with_dalle2": CopywritingApproach(dalle2helper,AZURE_OPENAI_API_KEY, AZURE_OPENAI_API_BASE, AZURE_OPENAI_API_VERSION,AZURE_CHATGPT_DEPLOYMENT)
+    "gpt_with_dalle2": CopywritingApproach(AZURE_OPENAI_API_KEY, AZURE_OPENAI_API_BASE, AZURE_OPENAI_API_VERSION,AZURE_CHATGPT_DEPLOYMENT)
 }
 app = Flask(__name__)
 

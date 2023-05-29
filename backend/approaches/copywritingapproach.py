@@ -85,8 +85,8 @@ class CopywritingApproach(Approach):
         imageGenerator = overrides.get("image_generator") or "dalle"
         sdHost = overrides.get("sd_host") or ""
         if (imageGenerator == "dalle"):
-            dalle2_prompt = self._dalle2_prompt_generator("".join(prompt),style)
-            image_src = self.dalle2helper.generate_image(dalle2_prompt)
+            # dalle2_prompt = self._dalle2_prompt_generator("".join(prompt),style)
+            image_src = self.dalle2helper.generate_image(prompt, style)
         elif (imageGenerator == "sd"):
             image_src = self.sd.generate_image(prompt, sdHost)
         else:

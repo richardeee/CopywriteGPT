@@ -4,3 +4,5 @@ azure-storage-blob
 azure.identity
 python-dotenv
 webuiapi
+flask-session
+werkzeug
